@@ -1,8 +1,22 @@
 const inquirer = require('inquirer');
-const mysql = require("mysql")
+const mysql = require("mysql2")
 const cTable = require('console.table');
-const { addSnapshotSerializer } = require('expect');
 
+//CONNECTION TO SQL DATABASE
+const connection = mysql.createConnection({
+    host: 'localhost',
+    port: 3001,
+    user: 'root',
+    password: 'password',
+    database: 'employees_tracker'
+})
+//CONNECTION TO SERVER AND DB
+connection.connect(function(err){
+    if (err) throw err;
+    options();
+})
+
+//FIRST PROMPT IN TERMINAL
 const mainMenu = (data) => {
     return inquirer.prompt([
         {
