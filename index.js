@@ -1,15 +1,22 @@
 const inquirer = require('inquirer');
-const mysql = require('mysql2');
+const mysql2 = require('mysql2');
 const cTable = require('console.table');
+const mysql = require('mysql');
 
 // create the connection to database
 const connection = mysql.createConnection({
     host: 'localhost',
+    port: 3306,
     user: 'root',
-    database: 'test'
-});
+    password: 'Cheychey7',
+    database: 'employee_tracker'
+})
 
-
+// connects to sql server and sql database
+connection.connect(function(err){
+    if (err) throw err;
+    mainMenu();
+})
 
 
 //FIRST PROMPT IN TERMINAL
@@ -104,28 +111,32 @@ function viewEmployees() {
 //ADD DEPARTMENT
 function addDepartment() {
     
-    console.log(res);
+    console.table(res);
     mainMenu();
 }
 //ADD ROLE
 function addRole() {
     
-    console.log(res);
+    console.table(res);
     mainMenu();
 }
 //ADD EMPLOYEE
 function addEmployee() {
     
-    console.log(res);
+    console.table(res);
     mainMenu();
 }
 //UPDATE ROLE
 function updateRole() {
     
-    console.log(res);
+    console.table(res);
     mainMenu();
 }
 
 
 
-mainMenu();
+//mainMenu();
+
+function exit () {
+    connection.end();
+};
