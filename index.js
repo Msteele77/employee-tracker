@@ -1,20 +1,16 @@
 const inquirer = require('inquirer');
-const mysql = require("mysql2")
+const mysql = require('mysql2');
 const cTable = require('console.table');
 
-//CONNECTION TO SQL DATABASE
+// create the connection to database
 const connection = mysql.createConnection({
     host: 'localhost',
-    port: 3001,
     user: 'root',
-    password: 'password',
-    database: 'employees_tracker'
-})
-//CONNECTION TO SERVER AND DB
-connection.connect(function(err){
-    if (err) throw err;
-    options();
-})
+    database: 'test'
+});
+
+
+
 
 //FIRST PROMPT IN TERMINAL
 const mainMenu = (data) => {
@@ -77,22 +73,34 @@ const mainMenu = (data) => {
 
 //VIEW DEPARTMENTS
 function viewDepartments() {
-
-    console.log(res);
+    var query = 'SELECT * FROM department';
+    connection.query(query, function(err, res) {
+        if (err) throw err;
+        console.table('DEPARTMENTS:', res);
     mainMenu();
-}
+    })
+};
+
 //VIEW ROLES
 function viewRoles() {
-    
-    console.log(res);
+    var query = 'SELECT * FROM role';
+    connection.query(query, function(err, res){
+        if (err) throw err;
+        console.table('ROLES', res);
     mainMenu();
-}
+    })
+};
+
 //VIEW EMPLOYEES
 function viewEmployees() {
-    
-    console.log(res);
+    var query = 'SELECT * FROM employee';
+    connection.query(query, function(err, res) {
+        if (err) throw err;
+        console.table('EMPLOYEES:', res); 
     mainMenu();
-}
+    })
+};
+
 //ADD DEPARTMENT
 function addDepartment() {
     
