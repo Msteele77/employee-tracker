@@ -264,7 +264,7 @@ function addEmployee() {
 
 
 
- function updateRole () {
+function updateRole() {
 
     connection.query("SELECT * FROM role", function (err, res) {
         if (err) throw err
@@ -280,38 +280,38 @@ function addEmployee() {
 
             }))
 
-     inquirer.prompt([
-         {
-        name: "employee",
-        type: "list",
-        message: "What employee are you wanting to change?",
-        choices: employeeArr
-        },
-        {
-        name: "role",
-        type: "list",
-        message: "Which role do you want to update to?",
-        choices: roleArr
-        }
-     ]).then(function (val) {
+            inquirer.prompt([
+                {
+                    name: "employee",
+                    type: "list",
+                    message: "What employee are you wanting to change?",
+                    choices: employeeArr
+                },
+                {
+                    name: "role",
+                    type: "list",
+                    message: "Which role do you want to update to?",
+                    choices: roleArr
+                }
+            ]).then(function (val) {
 
-        connection.query("UPDATE employee SET ? WHERE ?",
-            [{
-                role_id: val.role,
+                connection.query("UPDATE employee SET ? WHERE ?",
+                    [{
+                        role_id: val.role,
 
-            
-            }, {
-                id: val.employee
-            }],
-             function (err) {
-                if (err) throw err
-                console.table(val)
-                mainMenu()
+
+                    }, {
+                        id: val.employee
+                    }],
+                    function (err) {
+                        if (err) throw err
+                        console.table(val)
+                        mainMenu()
+                    })
+
             })
-
+        })
     })
-})
-})
 }
 
 

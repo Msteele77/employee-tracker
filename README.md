@@ -6,7 +6,10 @@ Employee Tracker is a command line application that manages company's employee d
 
 ## Preview
 
-  
+### View departments, roles, employees (walkthrough video)
+([Walkthrough video](https://drive.google.com/file/d/1XyAlKV1wHscamHmrbXagFlDDlBcWkcnT/view))
+### Add department, role, employees & update employees
+([Walkthrough video](https://drive.google.com/file/d/1P6pyh6Naul1WsD44pNruszSq1Fc4f83F/view))
 
 ## Getting Started
 
@@ -32,3 +35,4 @@ To utilize this application you will need to clone this remote repository to you
 * Node.js
 
 * Javascript
+
